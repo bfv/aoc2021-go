@@ -13,11 +13,12 @@ func main() {
 
 	var a, b int = 0, 0
 
-	day := "day01"
+	day := "day03"
 	buf, _ := ioutil.ReadFile("input.txt")
 	input := strings.Split(string(buf), "\r\n")
 
-	
+	// logic here
+
 	elapsed := time.Since(start)
 	fmt.Printf("%v, a: %v, b: %v, time: %v", day, a, b, elapsed)
 }
