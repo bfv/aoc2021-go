@@ -1,4 +1,4 @@
-package main
+package aoc
 
 import (
 	"fmt"
@@ -9,18 +9,16 @@ import (
 
 func main() {
 
-	var a, b int = -1, -1
+	start := time.Now()
+
+	var a, b int = 0, 0
 
 	day := "day01"
-	buf, _ := ioutil.ReadFile("_input.txt")
-	lines := strings.Split(string(buf), "\r\n")
+	buf, _ := ioutil.ReadFile("input.txt")
+	input := strings.Split(string(buf), "\r\n")
 
-	start := time.Now()
-	for _, line := range lines {
-		fmt.Println(line)
-	}
+	
 	elapsed := time.Since(start)
-
 	fmt.Printf("%v, a: %v, b: %v, time: %v", day, a, b, elapsed)
 }
 
