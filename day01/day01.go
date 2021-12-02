@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"strings"
 	"time"
 
 	"github.com/bfv/aoc2021-go/aoc"
@@ -16,8 +14,7 @@ func main() {
 	var a, b int = -1, -1
 
 	day := "day01"
-	buf, _ := ioutil.ReadFile("input.txt")
-	input := strings.Split(string(buf), "\r\n")
+	input := aoc.GetStringArray("input.txt")
 
 	prev, prevB := -1, -1
 

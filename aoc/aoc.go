@@ -1,6 +1,26 @@
 package aoc
 
-import "strconv"
+import (
+	"io/ioutil"
+	"runtime"
+	"strconv"
+	"strings"
+)
+
+func GetStringArray(filename string) []string {
+	var sep string
+
+	if runtime.GOOS == "windows" {
+		sep = "\r\n"
+	} else {
+		sep = "\n"
+	}
+
+	buf, _ := ioutil.ReadFile(filename)
+	input := strings.Split(string(buf), sep)
+
+	return input
+}
 
 func GetIntArray(lines []string) []int {
 	ints := []int{}

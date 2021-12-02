@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/bfv/aoc2021-go/aoc"
 )
 
 type movement struct {
@@ -28,8 +29,7 @@ func main() {
 	var a, b int = 0, 0
 
 	day := "day02"
-	buf, _ := ioutil.ReadFile("input.txt")
-	input := strings.Split(string(buf), "\n")
+	input := aoc.GetStringArray("input.txt")
 	movements := processInput(input)
 
 	a = solveA(movements)
