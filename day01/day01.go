@@ -11,26 +11,18 @@ func main() {
 
 	start := time.Now()
 
-	var a, b int = -1, -1
+	var a, b int = 0, 0
 
 	day := "day01"
-	prev, prevB := -1, -1
-
 	ints := aoc.GetIntArray("input.txt")
-	for i, x := range ints {
-		// part a
-		if x > prev {
+	for i, _ := range ints {
+
+		if i > 0 && ints[i] > ints[i-1] {
 			a++
 		}
-		prev = x
 
-		// part b
-		if i > 1 {
-			y := ints[i-2] + ints[i-1] + ints[i]
-			if y > prevB {
-				b++
-			}
-			prevB = y
+		if i > 2 && ints[i] > ints[i-3] { // solution authored by Roel
+			b++
 		}
 	}
 
