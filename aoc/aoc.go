@@ -22,8 +22,9 @@ func GetStringArray(filename string) []string {
 	return input
 }
 
-func GetIntArray(lines []string) []int {
+func GetIntArray(filename string) []int {
 	ints := []int{}
+	lines := GetStringArray(filename)
 	for _, line := range lines {
 		x, _ := strconv.Atoi(line)
 		ints = append(ints, x)

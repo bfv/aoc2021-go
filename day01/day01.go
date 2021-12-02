@@ -14,11 +14,9 @@ func main() {
 	var a, b int = -1, -1
 
 	day := "day01"
-	input := aoc.GetStringArray("input.txt")
-
 	prev, prevB := -1, -1
 
-	ints := aoc.GetIntArray(input)
+	ints := aoc.GetIntArray("input.txt")
 	for i, x := range ints {
 		// part a
 		if x > prev {
