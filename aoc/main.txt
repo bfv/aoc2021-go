@@ -1,4 +1,4 @@
-package aoc
+package main
 
 import (
 	"fmt"
@@ -14,8 +14,7 @@ func main() {
 	var a, b int = 0, 0
 
 	day := "day03"
-	buf, _ := ioutil.ReadFile("input.txt")
-	input := strings.Split(string(buf), "\r\n")
+	input := aoc.G
 
 	// logic here
 

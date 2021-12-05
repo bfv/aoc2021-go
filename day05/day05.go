@@ -2,15 +2,21 @@ package main
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 	"strings"
 	"time"
 
 	"github.com/bfv/aoc2021-go/aoc"
+	"github.com/bfv/aoc2021-go/lib"
+	"github.com/bfv/aoc2021-go/shapes"
 )
 
-type seafloor map[string]int
+type seafloor shapes.Grid
+
+func (s seafloor) Print() {
+	g := shapes.Grid(s)
+	g.Print()
+}
 
 var seafloorA, seafloorB seafloor
 var lines []line
@@ -34,42 +40,34 @@ func (l line) getLine(s string) line {
 	return l0
 }
 
-func (l line) print() {
-	fmt.Printf("%v,%v -> %v,%v\n", l.x0, l.y0, l.x1, l.y1)
-}
-
 func (l line) apply(f *seafloor) {
-	//l.print()
-	dx, dy := 0, 0
+
 	deltaX := l.x1 - l.x0
 	deltaY := l.y1 - l.y0
 
-	if deltaX != 0 {
-		if deltaX > 0 {
-			dx = 1
-		} else {
-			dx = -1
-		}
+	dx := getStepDelta(deltaX)
+	dy := getStepDelta(deltaY)
 
-	}
-
-	if deltaY != 0 {
-		if deltaY > 0 {
-			dy = 1
-		} else {
-			dy = -1
-		}
-	}
-
-	dist := int(math.Max(math.Abs(float64(deltaX)), math.Abs(float64(deltaY))))
-
+	dist := lib.Max(lib.Abs(deltaX), lib.Abs(deltaY))
 	x, y := l.x0, l.y0
 	for i := 0; i <= dist; i++ {
-		(*f)[co(x, y)] += 1
+		(*f)[co(x, y)]++
 		x += dx
 		y += dy
 	}
 
+}
+
+func getStepDelta(n int) int {
+	delta := 0
+	if n != 0 {
+		if n > 0 {
+			delta = 1
+		} else {
+			delta = -1
+		}
+	}
+	return delta
 }
 
 func co(x int, y int) string {
@@ -127,7 +125,6 @@ func solveB() int {
 	danger := 0
 	for _, v := range seafloorB {
 		if v > 1 {
-			fmt.Println(v)
 			danger++
 		}
 	}
