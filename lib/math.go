@@ -27,3 +27,11 @@ func Min(a, b int) int {
 	}
 	return a
 }
+
+func CalcArraySum(a []int) int {
+	t := 0
+	for _, v := range a {
+		t += v
+	}
+	return t
+}
