@@ -2,9 +2,12 @@ package aoc
 
 import (
 	"io/ioutil"
+	"math"
 	"runtime"
 	"strconv"
 	"strings"
+
+	"github.com/bfv/aoc2021-go/lib"
 )
 
 var LineEnd string
@@ -45,6 +48,14 @@ func GetIntArrayFromBinary(filename string) []int {
 	return ints
 }
 
+func GetIntArrayFromString(inputStrings []string) []int {
+	array := []int{}
+	for _, f := range inputStrings {
+		array = append(array, lib.Atoi(f))
+	}
+	return array
+}
+
 func GetInputLineLength(filename string) int {
 	lines := GetStringArray(filename)
 	return len(lines[0])
@@ -58,4 +69,14 @@ func GetNumberArray(line string) []int {
 		numbers[i] = x
 	}
 	return numbers
+}
+
+func GetHighestIntFromArray(ints []int) int {
+	h := math.MinInt
+	for _, x := range ints {
+		if x > h {
+			h = x
+		}
+	}
+	return h
 }
