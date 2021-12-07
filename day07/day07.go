@@ -35,8 +35,9 @@ func solve(input []int) (int, int) {
 		fuelA := 0
 		fuelB := 0
 		for _, v := range input {
-			fuelA += lib.Abs(v - a)
-			fuelB += fuelBCost(lib.Abs(v - a))
+			d := lib.Abs(v - a)
+			fuelA += d
+			fuelB += d * (d + 1) / 2
 		}
 		if fuelA < lowestFuelA {
 			lowestFuelA = fuelA
@@ -46,8 +47,4 @@ func solve(input []int) (int, int) {
 		}
 	}
 	return lowestFuelA, lowestFuelB
-}
-
-func fuelBCost(d int) int {
-	return d * (d + 1) / 2
 }
