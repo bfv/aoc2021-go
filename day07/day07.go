@@ -29,22 +29,16 @@ func main() {
 
 func solve(input []int) (int, int) {
 	highest := aoc.GetHighestIntFromArray(input)
-	lowestFuelA := math.MaxInt
-	lowestFuelB := math.MaxInt
+	lowestFuelA, lowestFuelB := math.MaxInt, math.MaxInt
 	for a := 0; a <= highest; a++ {
-		fuelA := 0
-		fuelB := 0
+		fuelA, fuelB := 0, 0
 		for _, v := range input {
 			d := lib.Abs(v - a)
 			fuelA += d
 			fuelB += d * (d + 1) / 2
 		}
-		if fuelA < lowestFuelA {
-			lowestFuelA = fuelA
-		}
-		if fuelB < lowestFuelB {
-			lowestFuelB = fuelB
-		}
+		lowestFuelA = lib.Min(fuelA, lowestFuelA)
+		lowestFuelB = lib.Min(fuelB, lowestFuelB)
 	}
 	return lowestFuelA, lowestFuelB
 }
