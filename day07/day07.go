@@ -18,7 +18,7 @@ func main() {
 	var a, b int = 0, 0
 
 	day := "day07"
-	input := aoc.GetIntArrayFromString(strings.Split(aoc.GetStringArray("input.txt")[0], ","))
+	input := aoc.GetIntArrayFromStringArray(strings.Split(aoc.GetStringArray("input.txt")[0], ","))
 	fuelCostsB = map[int]int{}
 
 	a, b = solve(input)
