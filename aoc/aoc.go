@@ -48,12 +48,17 @@ func GetIntArrayFromBinary(filename string) []int {
 	return ints
 }
 
-func GetIntArrayFromString(inputStrings []string) []int {
+func GetIntArrayFromStringArray(inputStrings []string) []int {
 	array := []int{}
 	for _, f := range inputStrings {
 		array = append(array, lib.Atoi(f))
 	}
 	return array
+}
+
+func GetIntArrayFromString(inputString string) []int {
+	inputStrings := strings.Split(inputString, "")
+	return GetIntArrayFromStringArray(inputStrings)
 }
 
 func GetInputLineLength(filename string) int {
